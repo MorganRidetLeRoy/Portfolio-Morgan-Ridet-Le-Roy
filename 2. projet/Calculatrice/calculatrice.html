@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .calculatrice {
+            background-color: #2a7174;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10vh;
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(37, 160, 123, 0.678);
+        }
+
+        #ecran {
+            background-color: #e7e7e7;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: right;
+            font-size: 2em;
+            height: 30px;
+            overflow: hidden;
+        }
+
+        .boutons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+
+        button {
+            border: none;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #2488a7;
+            color: white;
+            transition: background-color 0.2s;
+        }
+
+        button.currency{
+            background-color: #2f9631;
+        }
+
+        button.currency:hover{
+            background-color: #4ef451;
+        }
+
+        button:hover {
+            background-color: #22aac2f1;
+        }
+
+        button.operateur {
+            background-color: #c07d1e;
+        }
+
+        button.operateur:hover {
+            background-color: #da8d21;
+        }
+
+        button.effacer {
+            background-color: #a5a5a5;
+            color: black;
+        }
+
+        button.effacer:hover {
+            background-color: black;
+            color: #a5a5a5;
+        }
+
+        button.egal {
+            background-color: #c07d1e;
+            grid-column: span 2;
+        }
+
+        button.egal:hover {
+            background-color: #da8d21;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculatrice">
+        <div class="ecran" id="ecran">0</div>
+        <div class="boutons">
+            <button class="effacer" onclick="effacer()">AC</button>
+            <button class="currency" onclick="currencyDollar()">$</button>
+            <button class="currency" onclick="currencyEuro()">€</button>
+            <button class="operateur" onclick="appendToScreen('/')">/</button>
+            <button onclick="appendToScreen('7')">7</button>
+            <button onclick="appendToScreen('8')">8</button>
+            <button onclick="appendToScreen('9')">9</button>
+            <button class="operateur" onclick="appendToScreen('x')">x</button>
+            <button onclick="appendToScreen('4')">4</button>
+            <button onclick="appendToScreen('5')">5</button>
+            <button onclick="appendToScreen('6')">6</button>
+            <button class="operateur" onclick="appendToScreen('-')">-</button>
+            <button onclick="appendToScreen('1')">1</button>
+            <button onclick="appendToScreen('2')">2</button>
+            <button onclick="appendToScreen('3')">3</button>
+            <button class="operateur" onclick="appendToScreen('+')">+</button>
+            <button onclick="appendToScreen('0')">0</button>
+            <button onclick="appendToScreen('.')">.</button>
+            <button class="egal" onclick="calculer()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let ecran = document.getElementById('ecran');
+        let change = 1.19; // Taux de change par défaut
+        let dollarEuro; // Variable de calcul de conversion
+        let egaleMem = false; //Mémorisation de l'appui sur la touche =
+
+        function appendToScreen(value) {
+            if ((ecran.textContent == '0' && value !== '.') || egaleMem) {
+                ecran.textContent = value;
+                egaleMem = false;
+            } else {
+                ecran.textContent = ecran.textContent + value;
+            }
+        }
+      
+
+        function effacer() {
+            ecran.textContent = '0';
+        }
+
+        function calculer() {
+            try {
+                // Remplace x par * pour le calcul
+                let expression = ecran.textContent.replace(/[xX×]/g, '*');
+                expression = expression.replace(/[€$]/g, '');
+                let resultat = eval(expression);
+                ecran.textContent = resultat;
+            } catch (error) {
+                ecran.textContent = 'Erreur';
+            }
+            egaleMem = true;
+        }
+         
+         // async transforme la fonction en une fonction qui retourne une promesse de réponse.(promise)
+         async function fetchExchangeRate() { 
+            try {
+                // await attend la résolution d’une promesse avant de continuer.
+                // la prommesse peut être un succès ou un échec
+                const response = await fetch('https://api.frankfurter.app/latest?from=EUR&to=USD');
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP : ${response.status}`);
+                }
+                const data = await response.json();
+                const rate = data.rates.USD;
+                change = rate.toFixed(4);
+                ecran.textContent = change+' $ pour 1 €';
+				egaleMem = true;
+
+            } catch (error) {
+                console.error("Erreur lors de la récupération du taux :", error);
+            }
+        }
+
+         // Appel de la fonction au chargement de la page
+        window.addEventListener('load', fetchExchangeRate);
+
+        function currencyDollar(){
+            dollarEuro = ecran.textContent.replace(/[$€]/g, '') / change;
+            ecran.textContent = dollarEuro.toFixed(2) + ' €';
+            //egaleMem = true;
+        }
+
+        function currencyEuro(){
+            dollarEuro = ecran.textContent.replace(/[€$]/g, '') * change;
+            ecran.textContent = dollarEuro.toFixed(2) + ' $';
+            //egaleMem = true;
+        }
+
+
+    </script>
+</body>
+</html>
