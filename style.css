@@ -1,0 +1,477 @@
+/* Variables de couleurs */
+:root {
+    --bg-color: #f8fafc;
+    --text-color: #1e293b;
+    --card-bg: #ffffff;
+    --nav-bg: #ffffff;
+    --primary: #2563eb;
+    --accent: #7c3aed;
+}
+
+/* Couleurs quand le mode sombre est activé */
+.dark-mode {
+    --bg-color: #0f172a;
+    --text-color: #f1f5f9;
+    --card-bg: #1e293b;
+    --nav-bg: #1e293b;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s; /* Transition douce */
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+nav {
+    background-color: var(--nav-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+
+    position: sticky; /* Indique au nav de rester fixé lors du scroll */
+    top: 0;           /* Se colle exactement en haut (0 pixels du bord) */
+    z-index: 1000;    /* S'assure que le menu passe AU-DESSUS des images et cartes */
+
+    /* Optionnel : Ajoute un fond et une ombre pour qu'il soit bien lisible sur le contenu */
+    background-color: var(--bg-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+nav ul { display: flex; list-style: none; gap: 20px; }
+
+header {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 5%;
+}
+
+.card {
+    background-color: var(--card-bg);
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+/* On s'assure que la grille ne crée pas d'espace vide à cause du lien */
+.grid > a {
+    display: block;
+}
+
+/* Applique ces variables à tes cartes */
+.card h3 {
+    color: #1e293b;
+}
+
+.card p {
+    color: #1e293b; 
+}
+
+.card:hover { transform: translateY(-5px); }
+
+/* Le conteneur permet de garder une taille fixe pour l'image */
+.card-image-container {
+    position: relative; /* Indispensable pour que le badge se repère par rapport à ce cadre */
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* TRÈS IMPORTANT : remplit l'espace sans déformer l'image */
+    transition: transform 0.3s ease; /* Petit effet sympa pour le survol */
+}
+
+/* Petit effet zoom quand on passe la souris sur la carte */
+.card:hover .card-img {
+    transform: scale(1.1);
+}
+
+.image-placeholder {
+    height: 150px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    padding: 10px 25px;
+    background: white;
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Style du bouton */
+.theme-btn {
+    padding: 8px 15px;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.dark-mode .theme-btn {
+    border-color: #fbbf24;
+    color: #fbbf24;
+}
+
+
+/* Style du contact */
+#contact {
+    text-align: center;
+    padding: 80px 5%;
+}
+
+.contact-intro {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 30px;
+    background: var(--card-bg);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    min-width: 250px;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: var(--primary);
+}
+
+.contact-item .icon {
+    font-size: 2rem;
+}
+
+.contact-item .info {
+    text-align: left;
+}
+
+.contact-item .label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.contact-item .value {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Style du formulaire */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: inherit;
+}
+
+.btn-submit {
+    padding: 12px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: var(--accent);
+}
+
+/* Ajustement pour le mode sombre spécifique aux bordures */
+.dark-mode .contact-form input, .dark-mode .contact-form textarea {
+    border-color: #444;
+}
+
+
+/* Style du A propos */
+#a-propos {
+    padding: 80px 5%;
+    background-color: var(--bg-color);
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Pour que ça passe l'un sous l'autre sur mobile */
+}
+
+/* Style de l'image (un cercle bleu par défaut) */
+.img-circle {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* Rend l'image ronde */
+    
+    /* TRUC IMPORTANT : object-fit */
+    object-fit: cover; /* Empêche l'image d'être écrasée ou étirée */
+    object-position: center; /* Centre le visage si l'image est rognée */
+
+    border: 5px solid var(--card-bg); /* Garde la bordure propre */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, var(--primary), var(--accent)); /* Fond si l'image a de la transparence */
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Style des petits badges de compétences */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.skill-tag {
+    background: var(--card-bg);
+    color: var(--primary);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid var(--primary);
+    transition: 0.3s;
+}
+
+.skill-tag:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Style fixe pour les tags de compétences non-code */
+.skill-tag1 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-top: 10px;
+    margin-right: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    /* Couleurs fixes (ne changeront pas en mode sombre) */
+    background: linear-gradient(135deg, #6e8efb, #a777e3); /* Dégradé bleu/violet */
+    color: #ffffff !important; /* Texte blanc forcé */
+    
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* On s'assure que même en mode sombre, le style reste le même */
+body.dark-theme .skill-tag1 {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: #ffffff !important;
+}
+
+/* Style projet calculatrice*/
+.badge-wip1 {
+    position: absolute; /* Permet de placer le badge n'importe où sur l'image */
+    top: 10px;         /* Distance du haut */
+    right: 10px;       /* Distance de la droite */
+    background-color: #4caf50; /* Joli vert pour dire terminer */
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 10;       /* S'assure qu'il passe devant l'image */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.badge-wip2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #607d8b; /* Un gris-bleu sobre qui montre que c'est une archive */
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* Style pour indiquer que la carte est cliquable */
+.project-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* On cible le lien qui entoure la carte*/
+.card-link {
+    display: block;          /* Force le lien à prendre toute la largeur */
+    text-decoration: none;   /* Enlève le soulignement bleu */
+    color: inherit;          /* Empêche le texte de devenir bleu */
+    margin: 0;               /* Supprime les marges parasites */
+    padding: 0;              /* Supprime les paddings parasites */
+}
+
+.card-link:hover .card {
+    transform: translateY(-5px); /* Petit effet de soulèvement au survol */
+    transition: transform 0.3s ease;
+}
+
+/* Style projet UGC Genshin Wonderland*/
+.badge-wip3 {
+    position: absolute; /* Permet de placer le badge n'importe où sur l'image */
+    top: 10px;         /* Distance du haut */
+    right: 10px;       /* Distance de la droite */
+    background-color: #ff9800; /* Orange vif pour attirer l'oeil */
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 10;       /* S'assure qu'il passe devant l'image */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.image-placeholder {
+    position: relative; /* Permet de placer le badge par-dessus */
+}
+
+/* Style de la fenêtre modale (le fond noir transparent) */
+.modal {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7); /* Fond sombre derrière */
+    backdrop-filter: blur(5px); /* Floute l'arrière-plan pour le style */
+}
+
+/* Le contenu de la boîte blanche */
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Bouton fermer */
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Animation d'apparition */
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Bouton pour télécharcher mon CV*/
+.btn-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background-color: var(--primary); /* Utilise ta couleur principale */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    margin-top: 15px;
+}
+
+.btn-cv:hover {
+    background-color: transparent;
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-3px); /* Petit effet de saut au survol */
+}
+
+/* En mode sombre, on s'assure que le texte reste lisible si le fond change */
+body.dark-theme .btn-cv:hover {
+    color: var(--primary);
+}

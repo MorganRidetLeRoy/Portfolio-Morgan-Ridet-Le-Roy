@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio Étudiant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><strong>Ridet-Le Roy Morgan</strong></div>
+        <ul>
+            <li><a href="#a-propos">À propos</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <button id="theme-toggle" class="theme-btn">Mode Sombre</button>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Bonjour, je suis Ridet-Le Roy Morgan</h1>
+        <p>Étudiant en BTS SIO Solutions Logicielles et Applications Métiers — Passionné par la création.</p>
+        <a href="#projets" class="btn">Voir mes travaux</a>
+    </header>
+
+    <section id="a-propos">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="1. image/1000005648.jpg" alt="Photo de Ridet-Le Roy Morgan" class="img-circle"> 
+        </div>
+        
+        <div class="about-text">
+            <h2>À propos de moi</h2>
+            <p>
+                Actuellement étudiant en <strong>1ère année de BTS SIO</strong> (Solutions Informatiques aux Organisations) spécialité <strong>SLAM</strong> (Solution Logicielles et Applications Métiers) au lycée <strong>Aliénor d'Aquitaine à Poitiers</strong>. <br><br>
+                Je me passionne pour les nouvelles formes de création numérique, notamment à travers les outils de <strong>User Generated Content (UGC)</strong>. Je suis avec attention l'évolution de plateformes comme l'Unreal Editor pour Fortnite ou le Miliastra Wonderland de Genshin Impact, qui repoussent les limites de la créativité communautaire et de la conception d'environnements interactifs. 
+            </p>
+
+            <div class="skills">
+                <span class="skill-tag">HTML / CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Design UI/UX</span>
+                <span class="skill-tag">Gestion de projet</span>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="projets">
+        <h2>Mes Projets d'Études</h2>
+        <div class="grid">
+            <div class="card project-card" data-url="2. projet/Calculatrice/calculatrice.html">
+                <div class="card-image-container">
+                    <img src="1. image/projet calculatrice.png" alt="Redesign de calculatrice" class="card-img">
+                    <span class="badge-wip1">FINI</span>
+                </div>
+                <h3>Projet Calculatrice</h3>
+                <p>Le projet avait pour but de découvrir le CSS en redesignant une calculatrice.</p>
+                <p>Cliquez pour essayer la calculatrice</p>
+                <span class="skill-tag1">JavaScript</span>
+                <span class="skill-tag1">Design UI/UX</span>
+            </div>
+            <div class="card project-card" data-url="2. projet/Kanban de tâche a faire 2/index.html">
+                <div class="card-image-container">
+                    <img src="1. image/projet kanban.png" alt="Découverte du Kanban et du drag and drop" class="card-img">
+                    <span class="badge-wip2">PROJET D'ÉTUDE</span>
+                </div>
+                <h3>Projet Calculatrice</h3>
+                <p>Ce projet explore l'implémentation du Drag & Drop à travers la création d'un tableau de bord Kanban. L'objectif principal était la maîtrise de l'API HTML5 Drag & Drop et la gestion dynamique du DOM. Certaines fonctionnalités secondaires (comme la personnalisation graphique des tâches) sont présentes à l'état de prototype, le focus ayant été mis sur la logique de déplacement et l'organisation structurelle.</p>
+                <p>Cliquez pour vous déplacer vers le projet</p>
+                <span class="skill-tag1">HTML / CSS</span>
+                <span class="skill-tag1">JavaScript</span>
+                <span class="skill-tag1">Gestion de projet</span>
+            </div>
+            <div class="card" onclick="openModal()">
+                <div class="card-image-container">
+                    <img src="1. image/projet UGC.png" alt="Level Design UGC" class="card-img">
+                    <span class="badge-wip3">En cours</span>
+                </div>
+                <h3>Level Design (Genshin UGC)</h3>
+                <p>Étude de la composition d'espace et des mécaniques de jeu via le Miliastra Wonderland.</p>
+                <p>Cliquez pour voir ma réflexion sur l'expérience...</p>
+                <span class="skill-tag1">Non code</span>
+                <span class="skill-tag1">Design UI/UX</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+    <h2>Me contacter</h2>
+    <p class="contact-intro">Une question sur mes projets ou une opportunité de stage ? N'hésitez pas à me joindre !</p>
+    
+    <div class="contact-links">
+        <a href="mailto:morganridetleroy86@gmail.com" class="contact-item">
+            <span class="icon">📧</span>
+            <div class="info">
+                <span class="label">Email</span>
+                <span class="value">morganridetleroy86@gmail.com</span>
+            </div>
+        </a>
+
+        <a href="https://linkedin.com/in/morgan-ridet-le-roy-981774382" target="_blank" class="contact-item">
+            <span class="icon">💼</span>
+            <div class="info">
+                <span class="label">LinkedIn</span>
+                <span class="value">Mon Profil Professionnel</span>
+            </div>
+        </a>
+        <a href="1. image/CV Ridet-Le Roy Morgan.pdf" download="CV Ridet-Le Roy Morgan.pdf" class="btn-cv">
+            <span class="icon">📄</span> Télécharger mon CV (PDF)
+        </a>
+    </div>
+</section>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Analyse : Programmation Visuelle vs Classique</h2>
+            <div class="modal-body">
+                <p><strong>Mon expérience :</strong> J'ai découvert que le "non code" est paradoxalement plus complexe à appréhender que les langages classiques dans sa structure logique.</p>
+                <p><strong>Ce que j'ai retenu :</strong> Bien que le design de map soit la partie la plus gratifiante pour moi, la mise en place des mécaniques via l'UGC demande une rigueur d'analyse des flux de données très poussée.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
