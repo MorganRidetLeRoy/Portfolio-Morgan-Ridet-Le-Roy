@@ -35,6 +35,9 @@ nav {
     top: 0;           /* Se colle exactement en haut (0 pixels du bord) */
     z-index: 1000;    /* S'assure que le menu passe AU-DESSUS des images et cartes */
 
+    text-decoration: none; /* Enlève le soulignement moche par défaut */
+    transition: 0.3s; /* Pour que le changement de couleur soit fluide */
+    
     /* Optionnel : Ajoute un fond et une ombre pour qu'il soit bien lisible sur le contenu */
     background-color: var(--bg-color);
     box-shadow: 0 2px 10px rgba(0,0,0,0.5);
@@ -487,6 +490,7 @@ body.dark-theme .btn-cv:hover {
     color: var(--primary);
 
 }
+
 
 
 
