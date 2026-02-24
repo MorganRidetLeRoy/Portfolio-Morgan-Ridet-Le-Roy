@@ -34,9 +34,6 @@ nav {
     position: sticky; /* Indique au nav de rester fixé lors du scroll */
     top: 0;           /* Se colle exactement en haut (0 pixels du bord) */
     z-index: 1000;    /* S'assure que le menu passe AU-DESSUS des images et cartes */
-
-    text-decoration: none; /* Enlève le soulignement moche par défaut */
-    transition: 0.3s; /* Pour que le changement de couleur soit fluide */
     
     /* Optionnel : Ajoute un fond et une ombre pour qu'il soit bien lisible sur le contenu */
     background-color: var(--bg-color);
@@ -52,6 +49,8 @@ nav {
 /* Couleur quand on passe la souris dessus (Hover) */
 nav a:hover {
     color: #2ecc71; /* Change en vert au survol */
+    text-decoration: none; /* Enlève le soulignement moche par défaut */
+    transition: 0.3s; /* Pour que le changement de couleur soit fluide */
 }
 
 nav ul { display: flex; list-style: none; gap: 20px; }
@@ -490,6 +489,7 @@ body.dark-theme .btn-cv:hover {
     color: var(--primary);
 
 }
+
 
 
 
