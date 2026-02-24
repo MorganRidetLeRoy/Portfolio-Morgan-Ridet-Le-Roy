@@ -40,8 +40,10 @@ nav {
     box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 /*Ajout d'une couleur différente pour les liens*/
-.lien-nav{
-    text-color: yellow;
+nav a {
+    color: #fbbf24;
+    text-decoration: none; /* Enlève le soulignement moche par défaut */
+    transition: 0.3s; /* Pour que le changement de couleur soit fluide */
 }
 
 nav ul { display: flex; list-style: none; gap: 20px; }
@@ -480,3 +482,4 @@ body.dark-theme .btn-cv:hover {
     color: var(--primary);
 
 }
+
