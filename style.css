@@ -42,6 +42,9 @@ nav {
 /*Ajout d'une couleur différente pour les liens*/
 .dark-mode nav a {
     color: #fbbf24;
+}
+
+nav {
     text-decoration: none; /* Enlève le soulignement moche par défaut */
     transition: 0.3s; /* Pour que le changement de couleur soit fluide */
 }
@@ -489,6 +492,7 @@ body.dark-theme .btn-cv:hover {
     color: var(--primary);
 
 }
+
 
 
 
