@@ -44,7 +44,7 @@ nav {
     color: #fbbf24;
 }
 
-nav {
+nav a{
     text-decoration: none; /* Enlève le soulignement moche par défaut */
     transition: 0.3s; /* Pour que le changement de couleur soit fluide */
 }
@@ -492,6 +492,7 @@ body.dark-theme .btn-cv:hover {
     color: var(--primary);
 
 }
+
 
 
 
