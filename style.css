@@ -46,6 +46,11 @@ nav a {
     transition: 0.3s; /* Pour que le changement de couleur soit fluide */
 }
 
+/* Couleur quand on passe la souris dessus (Hover) */
+nav a:hover {
+    color: #2ecc71; /* Change en vert au survol */
+}
+
 nav ul { display: flex; list-style: none; gap: 20px; }
 
 header {
@@ -482,4 +487,5 @@ body.dark-theme .btn-cv:hover {
     color: var(--primary);
 
 }
+
 
